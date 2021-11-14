@@ -6,15 +6,16 @@ A command line interpreter for our AirBnB clone project
 
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
     """Airbnb_clone console"""
     prompt = '(hbnb) '
     file = None
-    
+
     def do_EOF(self, line):
         'Quit command to exit the program'
         return True
-    
+
     def do_quit(self, line):
         'Quit command to exit the program'
         return True
