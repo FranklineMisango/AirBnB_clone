@@ -5,8 +5,6 @@ A command line interpreter for our AirBnB clone project
 """
 
 import cmd
-import json
-import models
 from models import storage
 from models.base_model import BaseModel
 from models.amenity import Amenity
