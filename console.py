@@ -13,7 +13,6 @@ from models.state import State
 from models.city import City
 from models.place import Place
 from models.review import Review
-import shlex
 
 classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
            'State': State, 'City': City, 'Amenity': Amenity, 'Review': Review}
@@ -88,21 +87,19 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, args):
         """Prints all string representation of all instances
         based or not on the class name."""
-        split_args = shlex.split(args)
-        n_list = []
-        dict_json = models.storage.all()
-        if args:
-            try:
-                for key in models.storage.all():
-                    if split_args[0] == key.split('.')[0]:
-                        n_list.append(str(dict_json[key]))
-                print(n_list)
-            except Exception:
-                print("** class doesn't exist **")
+        args = parse(args)
+        obj_list = []
+        if len(args) == 0:
+            for objs in storage.all().values():
+                obj_list.append(objs)
+            print(obj_list)
+        elif args[0] in HBNBCommand.classes:
+            for key, objs in storage.all().items():
+                if args[0] in key:
+                    obj_list.append(objs)
+            print(obj_list)
         else:
-            for key in models.storage.all():
-                n_list.append(str(models.storage.all()[key]))
-            print(n_list)
+            print("** class doesn't exist **")
 
     def do_update(self, args):
         """Updates an instance based on the class name and
