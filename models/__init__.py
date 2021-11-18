@@ -14,8 +14,10 @@ storage = FileStorage()
 
 class Classes(dict):
     """ classes """
+
     def __getitem__(self, key):
         """get item"""
+
         try:
             return super(Classes, self).__getitem__(key)
         except Exception as e:
