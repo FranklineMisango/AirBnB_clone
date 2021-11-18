@@ -22,7 +22,12 @@ classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
 class HBNBCommand(cmd.Cmd):
     """Airbnb_clone console"""
 
+    intro = 'Hi there! Bienvenue to the AirBnB-clone console Type ? or shout help for help'
     prompt = '(hbnb) '
+
+        def __init__(self, completekey='tab', stdin=None, stdout=None):
+        """init method"""
+        super().__init__(completekey, stdin, stdout)
 
     def do_EOF(self, line):
         """End of The File"""
