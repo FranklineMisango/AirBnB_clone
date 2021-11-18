@@ -14,7 +14,7 @@ class FileStorage:
     def __init__(self):
         """Empty constructor"""
         pass
-    
+
     def all(self):
         """Returns the __objects from this file
         """
@@ -44,6 +44,6 @@ class FileStorage:
         """
         try:
             with open(FileStorage.__file_path, "r") as json_file:
-                obj_dict = json.load(json_file)    
+                obj_dict = json.load(json_file)
         except:
             pass
