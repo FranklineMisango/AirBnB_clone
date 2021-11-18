@@ -25,8 +25,9 @@ class HBNBCommand(cmd.Cmd):
     intro = 'Hi there! Bienvenue to the AirBnB-clone console Type ? or shout help for help'
     prompt = '(hbnb) '
 
-        def __init__(self, completekey='tab', stdin=None, stdout=None):
+    def __init__(self, completekey='tab', stdin=None, stdout=None):
         """init method"""
+
         super().__init__(completekey, stdin, stdout)
 
     def do_EOF(self, line):
