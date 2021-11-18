@@ -1,15 +1,33 @@
 #!/usr/bin/python3
 """ Class FileStorage """
 
-from models.base_model import BaseModel
+import models
 import json
+import os
 
+
+class Objects(dict):
+    """class object"""
+
+    def __getitem__(self, key):
+        """get item"""
+        try:
+            return super(Objects, self).__getitem__(key)
+        except Exception as e:
+            raise Exception("** no instance found **")
+
+    def pop(self, key):
+        """pop item"""
+        try:
+            return super(Objects, self).pop(key)
+        except Exception as e:
+            raise Exception("** no instance found **")
 
 class FileStorage:
-    """
+    """Serializes instances to a JSON file & vice versa
     """
     __file_path = "file.json"
-    __objects = {}
+    __objects = Objects()
 
     def __init__(self):
         """Empty constructor"""
