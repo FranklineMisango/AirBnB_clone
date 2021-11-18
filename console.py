@@ -5,6 +5,7 @@ A command line interpreter for our AirBnB clone project
 """
 
 import cmd
+import models
 from models import storage
 from models.base_model import BaseModel
 from models.amenity import Amenity
@@ -87,19 +88,18 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, args):
         """Prints all string representation of all instances
         based or not on the class name."""
-        args = parse(args)
-        obj_list = []
-        if len(args) == 0:
-            for objs in storage.all().values():
-                obj_list.append(objs)
-            print(obj_list)
-        elif args[0] in HBNBCommand.classes:
-            for key, objs in storage.all().items():
-                if args[0] in key:
-                    obj_list.append(objs)
-            print(obj_list)
+        if args == "":
+            print([x.__str__() for x in models.storage.all().values()])
         else:
-            print("** class doesn't exist **")
+            try:
+                model = models.classes[args]
+                resp = []
+                for l in models.storage.all().values():
+                    if type(l) == model:
+                        resp.append(l.__str__())
+                print(resp)
+            except Exception as e:
+                print(e)
 
     def do_update(self, args):
         """Updates an instance based on the class name and
