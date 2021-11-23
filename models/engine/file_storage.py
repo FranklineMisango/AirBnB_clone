@@ -63,4 +63,4 @@ class FileStorage:
             elif , do nothing. If the file not exist,
         """
         with open(FileStorage.__file_path, "r") as json_file:
-                obj_dict = json.load(json_file)
+            obj_dict = json.load(json_file)
