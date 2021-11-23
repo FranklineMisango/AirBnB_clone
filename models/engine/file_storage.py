@@ -26,6 +26,7 @@ class Objects(dict):
 class FileStorage:
     """Serializes instances to a JSON file & vice versa
     """
+
     __file_path = "file.json"
     __objects = Objects()
 
@@ -63,5 +64,3 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as json_file:
                 obj_dict = json.load(json_file)
-        except:
-            pass

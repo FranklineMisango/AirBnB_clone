@@ -22,7 +22,6 @@ classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
 class HBNBCommand(cmd.Cmd):
     """Airbnb_clone console"""
 
-    intro = 'Hi there! Bienvenue to the AirBnB-clone console Type ? or shout help for help'
     prompt = '(hbnb) '
 
     def __init__(self, completekey='tab', stdin=None, stdout=None):
@@ -108,9 +107,9 @@ class HBNBCommand(cmd.Cmd):
             try:
                 model = models.classes[args]
                 resp = []
-                for l in models.storage.all().values():
-                    if type(l) == model:
-                        resp.append(l.__str__())
+                for x in models.storage.all().values():
+                    if type(x) == model:
+                        resp.append(x.__str__())
                 print(resp)
             except Exception as e:
                 print(e)
@@ -144,4 +143,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
 if __name__ == '__main__':
+    """For importing the class"""
+
+
     HBNBCommand().cmdloop()
