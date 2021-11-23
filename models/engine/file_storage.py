@@ -23,6 +23,7 @@ class Objects(dict):
         except Exception as e:
             raise Exception("** no instance found **")
 
+
 class FileStorage:
     """Serializes instances to a JSON file & vice versa
     """
@@ -64,3 +65,5 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as json_file:
                 obj_dict = json.load(json_file)
+        except:
+            pass
