@@ -62,8 +62,5 @@ class FileStorage:
         """ if (__file_path) exists deserializes JSON file to __objects
             elif , do nothing. If the file not exist,
         """
-        try:
-            with open(FileStorage.__file_path, "r") as json_file:
+        with open(FileStorage.__file_path, "r") as json_file:
                 obj_dict = json.load(json_file)
-        except:
-            print("An error occurred")
