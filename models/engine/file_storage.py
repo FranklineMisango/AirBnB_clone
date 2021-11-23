@@ -66,4 +66,4 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as json_file:
                 obj_dict = json.load(json_file)
         except:
-            pass
+            print("An error occurred")
