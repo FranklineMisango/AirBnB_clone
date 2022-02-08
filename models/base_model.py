@@ -3,7 +3,7 @@
 
 import uuid
 from datetime import datetime
-#from uuid import uuid4
+from uuid import uuid4
 import models
 from json import JSONEncoder
 
@@ -28,7 +28,7 @@ class BaseModel:
             models.storage.new(self)
 
     def to_dict(self):
-        """ to_dict definition """
+        """to_dict definition"""
 
         dic = {}
         for key, item in self.__dict__.items():
@@ -38,6 +38,7 @@ class BaseModel:
         dic['__class__'] = self.__class__.__name__
         dic['created_at'] = self.created_at.isoformat()
         dic['updated_at'] = self.updated_at.isoformat()
+        dic['id'] = self.id
         return dic
 
     def __str__(self):
